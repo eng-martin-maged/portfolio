@@ -15,11 +15,11 @@
 :root{
   --bg:#070b16; --bg2:#0c1324; --card:#101a30; --line:#1d2a47;
   --text:#eef2fb; --muted:#9aa7c3; --volt:#ffc727; --volt2:#ff8a1f; --cyan:#3be0ff; --green:#2bff88;
-  --radius:18px; --max:1180px;
+  --radius:14px; --max:1120px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
 img{max-width:100%;display:block}
@@ -31,21 +31,32 @@ h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.05;letter-spacing:
 /* NAV */
 nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
 nav.scrolled{background:rgba(7,11,22,.88);backdrop-filter:blur(12px);border-color:var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+nav>.wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-weight:700;font-size:1.1rem}
 .logo svg{width:30px;height:30px}
-.links{display:flex;gap:26px;font-size:.93rem;color:var(--muted);align-items:center}
+.links{display:flex;gap:22px;font-size:.88rem;color:var(--muted);align-items:center}
 .links a:hover{color:var(--volt)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:.95rem;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s,color .2s;cursor:pointer;border:0}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-weight:600;font-size:.88rem;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s,color .2s;cursor:pointer;border:0}
 .btn-volt{background:linear-gradient(135deg,var(--volt),var(--volt2));color:#121212}
 .btn-volt:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(255,199,39,.6)}
 .btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.03)}
 .btn-ghost:hover{border-color:var(--volt);color:var(--volt)}
-nav .btn{padding:9px 18px}
+nav .btn{padding:7px 16px}
 .burger{display:none;background:none;border:0;color:var(--text);cursor:pointer}
 
+/* TOP CONTACT BAR */
+.topbar{background:linear-gradient(90deg,rgba(255,199,39,.14),rgba(255,199,39,.05));border-bottom:1px solid rgba(255,199,39,.25)}
+.topbar .wrap{display:flex;justify-content:flex-end;align-items:center;gap:22px;height:32px;flex-wrap:wrap}
+.topbar a{display:inline-flex;align-items:center;gap:6px;font:500 .74rem "JetBrains Mono",monospace;color:var(--volt);white-space:nowrap}
+.topbar a:hover{color:#fff}
+.topbar svg{width:13px;height:13px;flex:none}
+.topbar .wrap{min-height:32px;height:auto}
+@media (max-width:760px){.topbar .wrap{justify-content:center;gap:16px;flex-wrap:nowrap}.topbar a{font-size:.68rem}
+  .topbar a:nth-child(2) span,.topbar a:last-child span{display:none}
+  .topbar a:nth-child(2)::after{content:"Email"}.topbar a:last-child::after{content:"LinkedIn"}}
+
 /* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:110px 0 70px;overflow:hidden}
+.hero{position:relative;display:flex;align-items:center;padding:130px 0 64px;overflow:hidden}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.35;mask-image:radial-gradient(ellipse at 70% 40%,#000 20%,transparent 70%)}
 .glow{position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.28;pointer-events:none}
 .glow.a{background:var(--volt);top:-200px;right:-150px}
@@ -54,15 +65,15 @@ nav .btn{padding:9px 18px}
 .tag{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted)}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(43,255,136,.6);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(43,255,136,0)}100%{box-shadow:0 0 0 0 rgba(43,255,136,0)}}
-.hero h1{font-size:clamp(2.9rem,7.4vw,6rem);font-weight:700;margin:22px 0 18px}
+.hero h1{font-size:clamp(2.3rem,5vw,4rem);font-weight:700;margin:16px 0 12px}
 .hero h1 .eng{display:block;font-size:.36em;color:var(--muted);font-weight:500;letter-spacing:.02em;margin-bottom:6px}
 .hero h1 .grad{background:linear-gradient(120deg,var(--volt),var(--volt2) 60%,#ff5a3c);-webkit-background-clip:text;background-clip:text;color:transparent}
-.role{font-family:"Space Grotesk";font-size:clamp(1.2rem,2.4vw,1.6rem);font-weight:500;min-height:2.2em}
+.role{font-family:"Space Grotesk";font-size:clamp(1.05rem,1.8vw,1.3rem);font-weight:500;min-height:2.2em}
 .role .typed{color:var(--volt);border-right:2px solid var(--volt);padding-right:4px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{border-color:transparent}}
-.hero p.lead{color:var(--muted);max-width:560px;margin:14px 0 30px;font-size:1.05rem}
+.hero p.lead{color:var(--muted);max-width:520px;margin:8px 0 22px;font-size:.98rem}
 .cta{display:flex;gap:14px;flex-wrap:wrap}
-.mini-sld{width:100%;max-width:460px;justify-self:end}
+.mini-sld{width:100%;max-width:330px;justify-self:end}
 .wire{fill:none;stroke:var(--volt);stroke-width:2.2;stroke-dasharray:8 6;animation:flow 1.6s linear infinite}
 .wire.c{stroke:var(--cyan)}
 @keyframes flow{to{stroke-dashoffset:-28}}
@@ -71,87 +82,92 @@ nav .btn{padding:9px 18px}
 .mini-sld text.s{fill:var(--muted);font-size:9.5px;font-weight:500}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:-30px;position:relative;z-index:2}
-.stat{background:var(--bg2);padding:26px 22px}
-.stat b{display:block;font-family:"Space Grotesk";font-size:clamp(2rem,4vw,2.8rem);color:var(--volt);line-height:1}
-.stat span{color:var(--muted);font-size:.9rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:-20px;position:relative;z-index:2}
+.stat{background:var(--bg2);padding:16px 18px}
+.stat b{display:block;font-family:"Space Grotesk";font-size:clamp(1.5rem,2.6vw,2rem);color:var(--volt);line-height:1}
+.stat span{color:var(--muted);font-size:.8rem}
 
 /* SECTIONS */
-section{padding:90px 0}
-.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px;flex-wrap:wrap}
-.head h2{font-size:clamp(2.2rem,5vw,3.6rem);max-width:720px}
+section{padding:40px 0 0}
+.head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:22px;flex-wrap:wrap}
+.head h2{font-size:clamp(1.4rem,2.6vw,1.9rem);max-width:720px}
 .head p{color:var(--muted);max-width:420px}
-.kicker{color:var(--volt);margin-bottom:14px;display:block}
+.kicker{color:var(--volt);margin-bottom:6px;display:block;font-size:.7rem}
 
 /* ===== EXPANDABLE SECTIONS ===== */
-.fold-head{cursor:pointer;position:relative;padding:30px;margin-bottom:0;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(135deg,rgba(255,255,255,.025),transparent 60%);transition:border-color .3s,background .3s}
+.fold-head{cursor:pointer;position:relative;padding:16px 22px;margin-bottom:0;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(135deg,rgba(255,255,255,.025),transparent 60%);transition:border-color .3s,background .3s}
 .fold-head:hover{border-color:rgba(255,199,39,.45)}
 .fold.open .fold-head{border-color:rgba(255,199,39,.35);border-bottom-left-radius:0;border-bottom-right-radius:0}
 .fold-side{display:flex;flex-direction:column;align-items:flex-end;gap:16px;max-width:420px}
 .fold-side p{text-align:right}
-.tog{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;border:1px solid rgba(255,199,39,.5);background:rgba(255,199,39,.08);color:var(--volt);font-weight:600;font-size:.9rem;cursor:pointer;white-space:nowrap}
-.tog svg{width:18px;height:18px;transition:transform .4s}
+.tog{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,199,39,.5);background:rgba(255,199,39,.08);color:var(--volt);font-weight:600;font-size:.82rem;cursor:pointer;white-space:nowrap}
+.tog svg{width:16px;height:16px;transition:transform .4s}
 .fold.open .tog{background:var(--volt);color:#121212}
 .fold.open .tog svg{transform:rotate(180deg)}
-.fold-sum{padding:22px 30px 26px;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--radius) var(--radius);background:rgba(12,19,36,.6);margin-top:-1px}
+.fold-sum{padding:14px 22px 16px;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--radius) var(--radius);background:rgba(12,19,36,.6);margin-top:-1px}
 .fold-head:has(+ .fold-sum){border-bottom-left-radius:0;border-bottom-right-radius:0}
 .fold.open .fold-sum{display:none}
 .fold-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .7s cubic-bezier(.2,.8,.2,1)}
 .fold.open .fold-body{grid-template-rows:1fr}
 .fold-body>.inner{overflow:hidden;overflow:clip;min-height:0}
-.fold-body>.inner>.pad{padding-top:34px}
+.fold-body>.inner>.pad{padding-top:18px}
 .pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{font-size:.85rem;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg2);color:var(--text)}
+.pill{font-size:.78rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg2);color:var(--text)}
 .pill.y{border-color:rgba(255,199,39,.35);color:var(--volt)}
 .pill.c{border-color:rgba(59,224,255,.35);color:var(--cyan)}
 .sum-note{color:var(--muted);font-size:.88rem;margin-top:14px}
 .sum-note b{color:var(--text)}
+.kit{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.kit+.kit{margin-top:10px}
+.kit .kl{color:var(--muted);font-size:.68rem;min-width:150px}
+.pills.sm .pill{font-size:.72rem;padding:3px 9px}
+@media (max-width:760px){.kit .kl{min-width:0;width:100%}}
 
 /* SERVICES */
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;overflow:hidden;transition:transform .3s,border-color .3s}
+.services{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;overflow:hidden;transition:transform .3s,border-color .3s}
 .svc::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,0%),rgba(255,199,39,.13),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
 .svc:hover{transform:translateY(-4px);border-color:rgba(255,199,39,.45)}
 .svc:hover::before{opacity:1}
-.ico{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;background:rgba(255,199,39,.1);color:var(--volt);margin-bottom:18px}
-.ico svg{width:26px;height:26px}
-.svc h3{font-size:1.3rem;margin-bottom:12px}
-.svc ul{list-style:none;color:var(--muted);font-size:.93rem;display:grid;gap:7px}
-.svc li{padding-left:18px;position:relative}
-.svc li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--volt);opacity:.8}
+.ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(255,199,39,.1);color:var(--volt);margin-bottom:10px}
+.ico svg{width:18px;height:18px}
+.svc h3{font-size:1.02rem;margin-bottom:8px}
+.svc ul{list-style:none;color:var(--muted);font-size:.82rem;display:grid;gap:4px}
+.svc li{padding-left:14px;position:relative}
+.svc li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:2px;background:var(--volt);opacity:.8}
 /* Featured digital twin card (expandable on its own) */
 .svc-wide{grid-column:1/-1;border-color:rgba(59,224,255,.35);background:linear-gradient(120deg,rgba(59,224,255,.08),var(--card) 55%)}
 .svc-wide:hover{transform:none;border-color:rgba(59,224,255,.6)}
-.svc-wide .top{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;cursor:pointer}
+.svc-wide .top{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;cursor:pointer}
 .svc-wide .top>div{max-width:640px}
-.svc-wide h3{font-size:1.7rem}
-.svc-wide p{color:var(--muted);font-size:.95rem}
+.svc-wide h3{font-size:1.15rem}
+.svc-wide p{color:var(--muted);font-size:.86rem}
 .svc-wide .new{display:inline-block;color:var(--cyan);margin-bottom:8px}
 .svc-wide .ico{background:rgba(59,224,255,.12);color:var(--cyan)}
 .svc-wide li::before{background:var(--cyan)}
 .svc-wide .tog{border-color:rgba(59,224,255,.5);background:rgba(59,224,255,.08);color:var(--cyan)}
 .svc-wide.open .tog{background:var(--cyan);color:#06121a}
 .svc-wide.open .tog svg{transform:rotate(180deg)}
-.twin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:24px}
-.twin-step{border:1px solid rgba(59,224,255,.2);border-radius:14px;padding:18px;background:rgba(7,11,22,.5)}
-.twin-step b{font-family:"Space Grotesk";font-size:1.05rem;display:block;margin-bottom:6px}
+.twin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding-top:14px}
+.twin-step{border:1px solid rgba(59,224,255,.2);border-radius:10px;padding:12px 14px;background:rgba(7,11,22,.5)}
+.twin-step b{font-family:"Space Grotesk";font-size:.95rem;display:block;margin-bottom:2px}
 .twin-step .n{color:var(--cyan)}
-.twin-step p{font-size:.88rem}
+.twin-step p{font-size:.8rem}
 .twin-list{margin-top:18px;grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:760px){.twin-list{grid-template-columns:1fr}}
 
 /* PHASES */
-.phases{display:grid;grid-template-columns:repeat(4,1fr);margin-top:40px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.phase{padding:26px;border-right:1px solid var(--line);background:var(--bg2)}
+.phases{display:grid;grid-template-columns:repeat(4,1fr);margin-top:14px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.phase{padding:14px 16px;border-right:1px solid var(--line);background:var(--bg2)}
 .phase:last-child{border-right:0}
-.phase .n{font-family:"Space Grotesk";font-size:3rem;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--volt);line-height:1}
-.phase h4{font-family:"Space Grotesk";font-size:1.15rem;margin:10px 0 6px}
-.phase p{color:var(--muted);font-size:.9rem}
+.phase .n{font-family:"Space Grotesk";font-size:1.6rem;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--volt);line-height:1}
+.phase h4{font-family:"Space Grotesk";font-size:.98rem;margin:6px 0 2px}
+.phase p{color:var(--muted);font-size:.8rem}
 
 /* ===== SLD SHOWCASE ===== */
 #showcase{background:radial-gradient(ellipse at 50% 0%,rgba(255,199,39,.08),transparent 60%),var(--bg)}
-.sld-shell{border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,#0a1122,#070b16);overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.8)}
-.sld-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);background:rgba(16,26,48,.6);flex-wrap:wrap}
+.sld-shell{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#0a1122,#070b16);overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.8)}
+.sld-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);background:rgba(16,26,48,.6);flex-wrap:wrap}
 .sld-bar .t{display:flex;align-items:center;gap:10px;color:var(--muted)}
 .lamps{display:flex;gap:6px}.lamps i{width:11px;height:11px;border-radius:50%;background:#2a3655}.lamps i:first-child{background:#ff5f56}.lamps i:nth-child(2){background:var(--volt)}.lamps i:nth-child(3){background:var(--green)}
 .modes{display:flex;gap:6px;background:var(--bg);border:1px solid var(--line);padding:4px;border-radius:999px}
@@ -159,7 +175,7 @@ section{padding:90px 0}
 .modes button.on{background:var(--volt);color:#121212}
 .modes button[data-m="norm"].on{background:#2bff88;color:#06140c}
 .modes button[data-m="ess"].on{background:#ff4d5e;color:#fff}
-.sld-body{display:grid;grid-template-columns:1fr 290px}
+.sld-body{display:grid;grid-template-columns:1fr 240px}
 .sld-canvas{position:relative;overflow-x:auto;background-image:linear-gradient(rgba(29,42,71,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(29,42,71,.45) 1px,transparent 1px);background-size:32px 32px}
 .sld-canvas svg{display:block;width:100%;min-width:760px;height:auto}
 .blk rect.b{fill:#0f1a31;stroke:#2a3a60;stroke-width:1.6;transition:stroke .25s,fill .25s,filter .25s}
@@ -183,65 +199,61 @@ section{padding:90px 0}
 svg.m-norm .wire.e,svg.m-norm .wire.u,svg.m-norm .ess-only{opacity:.12}
 svg.m-ess .wire:not(.e):not(.u),svg.m-ess .norm-only{opacity:.12}
 .wire,.blk,.load{transition:opacity .35s}
-.inspector{border-left:1px solid var(--line);padding:24px;background:rgba(12,19,36,.75);display:flex;flex-direction:column;gap:14px}
+.inspector{border-left:1px solid var(--line);padding:16px;background:rgba(12,19,36,.75);display:flex;flex-direction:column;gap:14px}
 .inspector .k{color:var(--muted)}
-.inspector h3{font-size:1.5rem}
-.inspector p{color:var(--muted);font-size:.93rem}
+.inspector h3{font-size:1.15rem}
+.inspector p{color:var(--muted);font-size:.84rem}
 .legend{margin-top:auto;display:grid;gap:8px;font-size:.82rem;color:var(--muted);padding-top:16px;border-top:1px solid var(--line)}
 .legend span{display:flex;align-items:center;gap:10px}
 .legend i{width:26px;height:0;border-top:3px dashed #2bff88}
 .legend i.e{border-color:#ff4d5e}
 .legend i.u{border-color:#b57bff}
 .legend i.s{border:1.6px solid #2a3a60;height:12px;width:20px;border-radius:3px;background:#0f1a31}
-.sld-foot{padding:12px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sld-foot{padding:8px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 /* PROJECTS */
 #projects{background:linear-gradient(180deg,var(--bg),var(--bg2) 30%,var(--bg2) 70%,var(--bg))}
-.ptiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
-.ptile{display:flex;align-items:center;gap:12px;padding:10px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);cursor:pointer;text-align:left;transition:border-color .2s,transform .2s}
+.ptiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.ptile{display:flex;align-items:center;gap:10px;padding:7px;border-radius:10px;border:1px solid var(--line);background:var(--bg2);cursor:pointer;text-align:left;transition:border-color .2s,transform .2s}
 .ptile:hover{border-color:var(--volt);transform:translateY(-2px)}
-.ptile .sw{width:44px;height:44px;border-radius:10px;flex:none;display:grid;place-items:center;font:700 .72rem "JetBrains Mono";color:#fff;background:var(--g)}
-.ptile b{display:block;font-size:.9rem;line-height:1.25}
-.ptile small{color:var(--muted);font-size:.75rem}
-.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
-.filters button{background:transparent;border:1px solid var(--line);color:var(--muted);padding:9px 18px;border-radius:999px;cursor:pointer;font:500 .9rem Inter}
+.ptile .sw{width:36px;height:36px;border-radius:8px;flex:none;display:grid;place-items:center;font:700 .72rem "JetBrains Mono";color:#fff;background:var(--g)}
+.ptile b{display:block;font-size:.82rem;line-height:1.25}
+.ptile small{color:var(--muted);font-size:.7rem}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.filters button{background:transparent;border:1px solid var(--line);color:var(--muted);padding:6px 14px;border-radius:999px;cursor:pointer;font:500 .82rem Inter}
 .filters button.on,.filters button:hover{border-color:var(--volt);color:var(--volt)}
-.projects{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
-.proj{grid-column:span 2;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s;scroll-margin-top:100px}
-.proj.big{grid-column:span 3}
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s;scroll-margin-top:110px}
 .proj:hover{transform:translateY(-5px);border-color:rgba(255,199,39,.45)}
 .proj.flash{box-shadow:0 0 0 3px var(--volt)}
 .proj.hide{display:none}
-.thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--g)}
+.thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--g)}
 .thumb .art{position:absolute;inset:0;display:grid;place-items:center}
-.thumb .art svg{width:46%;height:auto;opacity:.95;filter:drop-shadow(0 10px 30px rgba(0,0,0,.4))}
+.thumb .art svg{width:34%;height:auto;opacity:.95;filter:drop-shadow(0 10px 30px rgba(0,0,0,.4))}
 .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .proj:hover .thumb img{transform:scale(1.06)}
-.thumb .badge{position:absolute;top:14px;left:14px;z-index:2;background:rgba(7,11,22,.8);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.12);padding:5px 11px;border-radius:999px}
-.thumb .flag{position:absolute;top:14px;right:14px;z-index:2;font-size:1.3rem}
-.pbody{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
-.pbody h3{font-size:1.35rem;margin-bottom:8px}
-.pbody p{color:var(--muted);font-size:.93rem;margin-bottom:16px}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.chip{font-size:.75rem;padding:4px 10px;border-radius:999px;background:rgba(59,224,255,.08);color:#a8eeff;border:1px solid rgba(59,224,255,.18)}
-.drive{margin-top:34px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:26px 30px;border:1px dashed rgba(255,199,39,.4);border-radius:var(--radius);background:rgba(255,199,39,.04)}
-.drive h3{font-size:1.3rem}
-.drive p{color:var(--muted);font-size:.93rem}
+.thumb .badge{position:absolute;top:8px;left:8px;z-index:2;background:rgba(7,11,22,.8);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.12);padding:3px 8px;font-size:.62rem;border-radius:999px}
+.thumb .flag{position:absolute;top:7px;right:9px;z-index:2;font-size:1rem}
+.pbody{padding:12px 14px 14px;display:flex;flex-direction:column;flex:1}
+.pbody h3{font-size:1rem;margin-bottom:4px;line-height:1.2}
+.pbody p{color:var(--muted);font-size:.8rem;line-height:1.45;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto}
+.chip{font-size:.68rem;padding:2px 8px;border-radius:999px;background:rgba(59,224,255,.08);color:#a8eeff;border:1px solid rgba(59,224,255,.18)}
 
 /* GALLERY + LIGHTBOX */
-.thumb .count{position:absolute;bottom:12px;right:12px;z-index:2;display:flex;align-items:center;gap:6px;background:rgba(7,11,22,.82);border:1px solid rgba(255,255,255,.14);padding:5px 10px;border-radius:999px;font-size:.75rem;font-weight:600}
+.thumb .count{position:absolute;bottom:8px;right:8px;z-index:2;display:flex;align-items:center;gap:5px;background:rgba(7,11,22,.82);border:1px solid rgba(255,255,255,.14);padding:3px 8px;border-radius:999px;font-size:.68rem;font-weight:600}
 .thumb .count svg{width:14px;height:14px}
 .thumb.has-gal{cursor:zoom-in}
 .thumb.has-gal img{background:#fff}
-.gal-btn{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin:-4px 0 16px;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,199,39,.45);background:rgba(255,199,39,.08);color:var(--volt);font-weight:600;font-size:.85rem;cursor:pointer}
+.gal-btn{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;margin:-2px 0 10px;padding:5px 11px;border-radius:999px;border:1px solid rgba(255,199,39,.45);background:rgba(255,199,39,.08);color:var(--volt);font-weight:600;font-size:.76rem;cursor:pointer}
 .gal-btn:hover{background:var(--volt);color:#121212}
-.gal-btn svg{width:16px;height:16px}
-.strip{display:flex;gap:6px;margin:-4px 0 14px;overflow:hidden}
-.strip button{flex:1;min-width:0;height:54px;border-radius:8px;overflow:hidden;border:1px solid var(--line);padding:0;cursor:zoom-in;background:#fff}
+.gal-btn svg{width:14px;height:14px}
+.strip{display:flex;gap:4px;margin:-2px 0 8px;overflow:hidden}
+.strip button{flex:1;min-width:0;height:34px;border-radius:6px;overflow:hidden;border:1px solid var(--line);padding:0;cursor:zoom-in;background:#fff}
 .strip img{width:100%;height:100%;object-fit:cover}
 .ptile .sw.ph{background-size:cover;background-position:center;font-size:0}
 .exp-photo{display:block;position:relative;margin-top:14px;width:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;padding:0;cursor:zoom-in;background:none}
-.exp-photo img{width:100%;height:120px;object-fit:cover}
+.exp-photo img{width:100%;height:80px;object-fit:cover}
 .exp-photo span{position:absolute;bottom:8px;right:8px;background:rgba(7,11,22,.8);padding:3px 9px;border-radius:999px;font-size:.72rem}
 .lb{position:fixed;inset:0;z-index:100;background:rgba(4,7,14,.94);backdrop-filter:blur(6px);display:none;flex-direction:column}
 .lb.open{display:flex}
@@ -260,49 +272,49 @@ svg.m-ess .wire:not(.e):not(.u),svg.m-ess .norm-only{opacity:.12}
 @media (max-width:760px){.lb-stage img{max-width:100%}.lb-nav{position:absolute;bottom:12px;width:42px;height:42px}.lb-nav.p{left:14px}.lb-nav.n{right:14px}}
 
 /* TOOLS + CODES */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
-.panel h3{font-size:1.5rem;margin-bottom:6px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{font-size:1.05rem;margin-bottom:12px}
 .panel>p{color:var(--muted);font-size:.93rem;margin-bottom:22px}
-.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.tool{border:1px solid var(--line);border-radius:14px;padding:16px 14px;background:var(--bg2);transition:border-color .2s,transform .2s}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tool{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:var(--bg2);transition:border-color .2s,transform .2s}
 .tool:hover{border-color:var(--volt);transform:translateY(-2px)}
-.tool b{font-family:"Space Grotesk";font-size:1.1rem;display:block}
-.tool span{color:var(--muted);font-size:.8rem}
-.codes{display:flex;flex-wrap:wrap;gap:10px}
-.code{font-family:"Space Grotesk";font-weight:700;font-size:1.25rem;padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:var(--bg2);display:flex;flex-direction:column;min-width:96px}
-.code small{font:500 .7rem Inter;color:var(--muted);margin-top:2px}
-.extra{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.tool b{font-family:"Space Grotesk";font-size:.95rem;display:block}
+.tool span{color:var(--muted);font-size:.72rem}
+.codes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.code{font-family:"Space Grotesk";font-weight:700;font-size:.98rem;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg2);display:flex;flex-direction:column;min-width:0}
+.code small{font:500 .64rem Inter;color:var(--muted);margin-top:1px;line-height:1.3}
+.extra{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .extra b{color:var(--text)}
 
 /* MARQUEE */
-.marquee{border-block:1px solid var(--line);padding:22px 0;overflow:hidden;background:var(--bg2)}
+.marquee{border-block:1px solid var(--line);padding:10px 0;margin-top:40px;overflow:hidden;background:var(--bg2)}
 .track{display:flex;gap:48px;width:max-content;animation:scroll 38s linear infinite}
-.track span{font-family:"Space Grotesk";font-weight:700;font-size:clamp(1.4rem,3vw,2.2rem);white-space:nowrap;color:transparent;-webkit-text-stroke:1px #3a4b72}
+.track span{font-family:"Space Grotesk";font-weight:700;font-size:clamp(1rem,1.8vw,1.35rem);white-space:nowrap;color:transparent;-webkit-text-stroke:1px #3a4b72}
 .track span.f{color:var(--volt);-webkit-text-stroke:0}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
 /* EXPERIENCE */
-.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.exp{border-top:3px solid var(--volt);background:var(--card);border-radius:0 0 var(--radius) var(--radius);padding:24px;border-inline:1px solid var(--line);border-bottom:1px solid var(--line)}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.exp{border-top:3px solid var(--volt);background:var(--card);border-radius:0 0 var(--radius) var(--radius);padding:14px 16px;border-inline:1px solid var(--line);border-bottom:1px solid var(--line)}
 .exp .mono{color:var(--muted)}
-.exp h4{font-family:"Space Grotesk";font-size:1.2rem;margin:10px 0 4px}
-.exp .org{color:var(--volt);font-weight:600;font-size:.92rem;margin-bottom:10px}
-.exp p{color:var(--muted);font-size:.88rem}
+.exp h4{font-family:"Space Grotesk";font-size:.98rem;margin:6px 0 2px}
+.exp .org{color:var(--volt);font-weight:600;font-size:.82rem;margin-bottom:6px}
+.exp p{color:var(--muted);font-size:.8rem}
 
 /* CONTACT */
-.contact{position:relative;border-radius:28px;overflow:hidden;padding:70px 50px;background:linear-gradient(135deg,#1a1405,#2a1d02 40%,#0c1324);border:1px solid rgba(255,199,39,.3)}
+.contact{position:relative;border-radius:18px;overflow:hidden;padding:30px 30px;background:linear-gradient(135deg,#1a1405,#2a1d02 40%,#0c1324);border:1px solid rgba(255,199,39,.3)}
 .contact .glow{opacity:.35;width:500px;height:500px;top:-200px;right:-100px}
-.contact h2{font-size:clamp(2.2rem,5.5vw,4.2rem);max-width:780px;position:relative}
-.contact>p{color:#cfc7ad;max-width:560px;margin:18px 0 36px;position:relative}
-.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative}
-.cbox{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:16px;background:rgba(7,11,22,.6);border:1px solid rgba(255,255,255,.08);transition:border-color .2s,transform .2s;min-width:0}
+.contact h2{font-size:clamp(1.4rem,2.8vw,2rem);max-width:780px;position:relative}
+.contact>p{color:#cfc7ad;max-width:560px;margin:8px 0 18px;position:relative;font-size:.9rem}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative}
+.cbox{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;background:rgba(7,11,22,.6);border:1px solid rgba(255,255,255,.08);transition:border-color .2s,transform .2s;min-width:0}
 .cbox:hover{border-color:var(--volt);transform:translateY(-2px)}
-.cbox svg{width:24px;height:24px;color:var(--volt);flex:none}
+.cbox svg{width:20px;height:20px;color:var(--volt);flex:none}
 .cbox small{display:block;color:var(--muted);font-size:.75rem}
-.cbox b{font-weight:600;font-size:.95rem;overflow-wrap:anywhere}
+.cbox b{font-weight:600;font-size:.86rem;overflow-wrap:anywhere}
 
-footer{padding:40px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);margin-top:60px}
+footer{padding:22px 0;color:var(--muted);font-size:.78rem;border-top:1px solid var(--line);margin-top:40px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 /* REVEAL */
@@ -314,8 +326,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .hero .wrap{grid-template-columns:1fr}
   .mini-sld{justify-self:start;max-width:380px}
   .services{grid-template-columns:1fr 1fr}
-  .projects{grid-template-columns:1fr 1fr}
-  .proj,.proj.big{grid-column:span 1}
   .split{grid-template-columns:1fr}
   .timeline{grid-template-columns:1fr 1fr}
   .phases{grid-template-columns:1fr 1fr}
@@ -327,22 +337,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .legend{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
-  .links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(7,11,22,.97);border-bottom:1px solid var(--line)}
+  .links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(7,11,22,.97);border-bottom:1px solid var(--line)}
   .links.open{display:flex}
   .links a,.links button{padding:16px 20px;border-top:1px solid var(--line);text-align:left}
   .burger{display:block}
   nav .btn{display:none}
-  section{padding:64px 0}
+  section{padding:28px 0 0}
+  .hero{padding:120px 0 40px}
   .stats{grid-template-columns:1fr 1fr;margin-top:0}
-  .services,.projects,.timeline,.twin-grid{grid-template-columns:1fr}
+  .services,.timeline,.twin-grid{grid-template-columns:1fr}
+  .codes{grid-template-columns:repeat(2,1fr)}
   .tools{grid-template-columns:1fr 1fr}
   .phases{grid-template-columns:1fr}
   .phase{border-right:0!important;border-bottom:1px solid var(--line)}
   .phase:last-child{border-bottom:0}
-  .contact{padding:44px 22px}
+  .contact{padding:24px 18px}
   .mini-sld{display:none}
-  .fold-head{padding:22px}
-  .fold-sum{padding:18px 22px 22px}
+  .fold-head{padding:14px 16px}
+  .fold-sum{padding:12px 16px 14px}
   .fold-side{align-items:flex-start}
   .fold-side p{text-align:left}
   .legend{grid-template-columns:1fr}
@@ -354,6 +366,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 <!-- ================= NAV ================= -->
 <nav id="nav">
+  <!-- Contact bar: always visible at the very top -->
+  <div class="topbar"><div class="wrap">
+    <a href="https://wa.me/201282088119" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>+20 128 208 8119</span></a>
+    <a href="mailto:martinmageddd@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><span>martinmageddd@gmail.com</span></a>
+    <a href="https://www.linkedin.com/in/martin3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg><span>linkedin.com/in/martin3</span></a>
+  </div></div>
   <div class="wrap">
     <a href="#top" class="logo">
       <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#ffc727"/><path d="M18 4 8 18h7l-2 10 11-15h-7z" fill="#070b16"/></svg>
@@ -382,7 +400,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <span class="tag mono"><span class="dot"></span> Available for freelance projects</span>
       <h1><span class="eng">Eng.</span>Martin <span class="grad">Maged</span></h1>
       <div class="role">Electrical BIM Engineer &mdash; <span class="typed" id="typed">Data Centers</span></div>
-      <p class="lead">I design electrical distribution systems, produce shop drawings and build live digital twins for residential, commercial and critical facilities, from hospitals to Tier IV data centers. I take projects from concept to detailed design, with every deliverable checked against the code.</p>
+      <p class="lead">Electrical distribution design, shop drawings &amp; digital twins for hospitals, data centers and buildings.</p>
       <div class="cta">
         <a href="#contact" class="btn btn-volt">Start a project
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -416,10 +434,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 <div class="wrap">
   <div class="stats rv">
-    <div class="stat"><b data-count="8">0</b><span>Design, shop drawing &amp; digital twin projects</span></div>
-    <div class="stat"><b>Tier&nbsp;IV</b><span>Data center design experience</span></div>
-    <div class="stat"><b data-count="8">0</b><span>Codes &amp; standards applied</span></div>
-    <div class="stat"><b data-count="3">0</b><span>Countries: KSA · Egypt · USA</span></div>
+    <div class="stat"><b data-count="8">0</b><span>Projects</span></div>
+    <div class="stat"><b>Tier&nbsp;IV</b><span>Data center design</span></div>
+    <div class="stat"><b data-count="8">0</b><span>Codes applied</span></div>
+    <div class="stat"><b data-count="3">0</b><span>Countries · KSA · EG · USA</span></div>
   </div>
 </div>
 
@@ -434,9 +452,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <section id="services" class="fold">
   <div class="wrap">
     <div class="head fold-head rv">
-      <div><span class="kicker mono">// What I deliver</span><h2>Electrical design, <span class="volt">from the utility to the last socket.</span></h2></div>
+      <div><span class="kicker mono">01</span><h2>What I <span class="volt">deliver</span></h2></div>
       <div class="fold-side">
-        <p>I work on complete electrical packages or single scopes, delivered as coordinated BIM models, drawings, calculations and reports.</p>
         <button class="tog" type="button" aria-expanded="false"><span>Expand services</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
       </div>
     </div>
@@ -501,27 +518,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
               <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/><path d="M11 7h4a2 2 0 0 1 2 2v4M13 17H9a2 2 0 0 1-2-2v-4"/></svg></div>
               <span class="mono new">New service</span>
               <h3>Live Digital Twins</h3>
-              <p>I turn a BIM model into a living copy of the building. Sensor data shows up next to the model, so the facilities management team can see what is happening and act on it.</p>
+              <p>BIM model + live sensor data for facilities management.</p>
             </div>
             <button class="tog" type="button" aria-expanded="false"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
           </div>
           <div class="fold-body"><div class="inner">
             <div class="twin-grid">
-              <div class="twin-step"><b><span class="n">01</span> Model</b><p>I bring the Revit model into Autodesk Tandem, or into a custom web dashboard I build for the client.</p></div>
-              <div class="twin-step"><b><span class="n">02</span> Connect</b><p>Wi-Fi sensors are linked to the matching rooms and equipment, and live data is fetched from the web.</p></div>
-              <div class="twin-step"><b><span class="n">03</span> Act</b><p>The FM team sees analytics in context, spots problems early and acts before they become failures.</p></div>
+              <div class="twin-step"><b><span class="n">01</span> Model</b><p>Revit → Tandem or a custom web dashboard</p></div>
+              <div class="twin-step"><b><span class="n">02</span> Connect</b><p>Wi-Fi sensors linked to rooms &amp; equipment</p></div>
+              <div class="twin-step"><b><span class="n">03</span> Act</b><p>FM team sees analytics and acts early</p></div>
             </div>
-            <ul class="twin-list"><li>Autodesk Tandem twins built from Revit models</li><li>Custom web dashboards for digital twins</li><li>Wi-Fi sensor integration</li><li>Live data fetching &amp; analytics for FM teams</li></ul>
-            <p style="margin-top:16px">Examples: <a href="#p-twin-sa" class="volt jump">Saudi Office twin</a> · <a href="#p-twin-eg" class="volt jump">Egyptian Home twin</a></p>
+            <p style="margin-top:14px">Projects: <a href="#p-twin-sa" class="volt jump">Saudi Office twin</a> · <a href="#p-twin-eg" class="volt jump">Egyptian Home twin</a></p>
           </div></div>
         </div>
       </div>
 
       <div class="phases rv">
-        <div class="phase"><div class="n">01</div><h4>Concept</h4><p>Load estimation, system strategy and space planning for electrical rooms.</p></div>
-        <div class="phase"><div class="n">02</div><h4>Schematic</h4><p>SLDs, equipment sizing, ETAP studies and the Basis of Design Report.</p></div>
-        <div class="phase"><div class="n">03</div><h4>Detailed</h4><p>Full Revit model, lighting, power, ELV, earthing and lightning protection, plus the BOQ.</p></div>
-        <div class="phase"><div class="n">04</div><h4>Shop Drawing</h4><p>Coordinated, construction-ready details, routing and sections.</p></div>
+        <div class="phase"><div class="n">01</div><h4>Concept</h4><p>Loads · strategy · space planning</p></div>
+        <div class="phase"><div class="n">02</div><h4>Schematic</h4><p>SLD · sizing · ETAP · BODR</p></div>
+        <div class="phase"><div class="n">03</div><h4>Detailed</h4><p>Full Revit model · BOQ</p></div>
+        <div class="phase"><div class="n">04</div><h4>Shop Drawing</h4><p>Construction-ready details</p></div>
       </div>
     </div></div></div>
   </div>
@@ -540,9 +556,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <section id="projects" class="fold">
   <div class="wrap">
     <div class="head fold-head rv">
-      <div><span class="kicker mono">// Selected work</span><h2>Projects across <span class="volt">three countries.</span></h2></div>
+      <div><span class="kicker mono">02</span><h2>My <span class="volt">projects</span></h2></div>
       <div class="fold-side">
-        <p>Full electrical designs, shop drawings and digital twins for KSA, Egypt and the USA, each one checked against its local codes.</p>
         <button class="tog" type="button" aria-expanded="false"><span>Expand projects</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
       </div>
     </div>
@@ -570,12 +585,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       </div>
 
       <div class="projects" id="grid">
-        <!--
-          TO ADD A SCREENSHOT: put an image in the "images" folder using the
-          file name shown in each <img src="...">. If the image is missing,
-          the coloured illustration shows instead.
-        -->
-        <article class="proj big rv" id="p-dc" data-cat="design critical">
+        <article class="proj rv" id="p-dc" data-cat="design critical">
           <div class="thumb" style="--g:linear-gradient(135deg,#0b2a4a,#071528 60%,#123a5e)">
             <div class="art"><svg viewBox="0 0 100 80" fill="none" stroke="#3be0ff" stroke-width="2.5"><rect x="10" y="8" width="22" height="64" rx="3"/><rect x="39" y="8" width="22" height="64" rx="3"/><rect x="68" y="8" width="22" height="64" rx="3"/><path d="M15 18h12M15 26h12M15 34h12M44 18h12M44 26h12M44 34h12M73 18h12M73 26h12M73 34h12" stroke="#ffc727"/></svg></div>
             <img src="images/usa-data-center.jpg" alt="USA Data Center electrical BIM model" loading="lazy" onerror="this.remove()">
@@ -583,12 +593,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
           <div class="pbody">
             <h3>USA Data Center</h3>
-            <p>Full electrical BIM design of a Tier IV data center: redundant power paths, ETAP studies, earthing, lightning protection and full coordination, with a BODR.</p>
-            <div class="chips"><span class="chip">Revit</span><span class="chip">ETAP</span><span class="chip">SLD</span><span class="chip">Earthing</span><span class="chip">Lightning</span><span class="chip">DIALux</span><span class="chip">Cable Routing</span><span class="chip">BODR</span></div>
+            <p>Tier IV electrical BIM design with redundant power paths.</p>
+            <div class="chips"><span class="chip">Revit</span><span class="chip">ETAP</span><span class="chip">Earthing</span><span class="chip">BODR</span></div>
           </div>
         </article>
 
-        <article class="proj big rv" id="p-hosp" data-cat="design critical">
+        <article class="proj rv" id="p-hosp" data-cat="design critical">
           <div class="thumb" style="--g:linear-gradient(135deg,#3a0d16,#1a0710 60%,#521624)">
             <div class="art"><svg viewBox="0 0 100 80" fill="none" stroke="#ff6b7d" stroke-width="2.5"><rect x="18" y="16" width="64" height="58" rx="3"/><path d="M50 26v20M40 36h20" stroke="#fff" stroke-width="5"/><path d="M30 60h10v14M60 60h10v14" stroke="#ffc727"/></svg></div>
             <img src="images/hospital/01.jpg" alt="Egyptian hospital electrical design" loading="lazy" onerror="this.remove()">
@@ -596,8 +606,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
           <div class="pbody">
             <h3>Egyptian Hospital</h3>
-            <p>Complete electrical design for a 4-storey hospital: essential power, bulk equipment, schedules, earthing, lightning protection and lighting design. <a href="#showcase" class="volt">See its SLD below ↓</a></p>
-            <div class="chips"><span class="chip">ETAP</span><span class="chip">AutoCAD</span><span class="chip">SLD</span><span class="chip">Bulk Equipment</span><span class="chip">Schedules</span><span class="chip">DIALux</span><span class="chip">Cable Route</span></div>
+            <p>4-storey hospital: essential power, earthing, lighting. <a href="#showcase" class="volt">See its SLD ↓</a></p>
+            <div class="chips"><span class="chip">ETAP</span><span class="chip">AutoCAD</span><span class="chip">SLD</span><span class="chip">DIALux</span></div>
           </div>
         </article>
 
@@ -609,8 +619,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
           <div class="pbody">
             <h3>Saudi School</h3>
-            <p>Full BIM electrical design coordinated with all four disciplines in Revit, including PV and LEED Gold compliance.</p>
-            <div class="chips"><span class="chip">Revit</span><span class="chip">ETAP</span><span class="chip">PV</span><span class="chip">Earthing</span><span class="chip">BODR</span><span class="chip">SBC / SEC</span></div>
+            <p>3-storey BIM design with PV and LEED Gold.</p>
+            <div class="chips"><span class="chip">Revit</span><span class="chip">ETAP</span><span class="chip">PV</span><span class="chip">SBC / SEC</span></div>
           </div>
         </article>
 
@@ -622,8 +632,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
           <div class="pbody">
             <h3>Saudi Administrative Building</h3>
-            <p>Full BIM electrical design covering bulk equipment, SLD, lighting, cable routes, earthing and lightning protection.</p>
-            <div class="chips"><span class="chip">Revit</span><span class="chip">ETAP</span><span class="chip">DIALux</span><span class="chip">Cable Route</span><span class="chip">Coordination</span></div>
+            <p>2-storey BIM design: SLD, lighting, routing, earthing.</p>
+            <div class="chips"><span class="chip">Revit</span><span class="chip">ETAP</span><span class="chip">DIALux</span><span class="chip">Cable Route</span></div>
           </div>
         </article>
 
@@ -635,12 +645,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
           <div class="pbody">
             <h3>Egyptian Administrative Building</h3>
-            <p>Construction-ready shop drawings for a 3-storey office building, with section details, conduit routing, lighting, small power and light current.</p>
-            <div class="chips"><span class="chip">AutoCAD</span><span class="chip">Section Details</span><span class="chip">Conduit Routing</span><span class="chip">Small Power</span><span class="chip">LC</span></div>
+            <p>3-storey office: lighting, power and light current.</p>
+            <div class="chips"><span class="chip">AutoCAD</span><span class="chip">Section Details</span><span class="chip">Conduit Routing</span></div>
           </div>
         </article>
 
-        <article class="proj big rv" id="p-lc" data-cat="design lc">
+        <article class="proj rv" id="p-lc" data-cat="design lc">
           <div class="thumb" style="--g:linear-gradient(135deg,#0b3340,#05171d 60%,#0f4a5c)">
             <div class="art"><svg viewBox="0 0 100 80" fill="none" stroke="#3be0ff" stroke-width="2.5"><circle cx="50" cy="40" r="8" stroke="#ffc727"/><path d="M50 32V12M50 48v20M42 40H18M58 40h24"/><rect x="40" y="4" width="20" height="10" rx="2"/><rect x="40" y="66" width="20" height="10" rx="2"/><rect x="6" y="34" width="14" height="12" rx="2"/><rect x="80" y="34" width="14" height="12" rx="2"/></svg></div>
             <img src="images/egypt-school-light-current.jpg" alt="Egyptian school light current design" loading="lazy" onerror="this.remove()">
@@ -648,12 +658,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
           <div class="pbody">
             <h3>Egyptian School: Light Current</h3>
-            <p>Complete ELV design: fire alarm, CCTV, access control, data, telephone and IP structured cabling.</p>
-            <div class="chips"><span class="chip">Fire Alarm</span><span class="chip">CCTV</span><span class="chip">Access Control</span><span class="chip">Data &amp; Telephone</span><span class="chip">Structured Cabling</span></div>
+            <p>Fire alarm, CCTV, access control and structured cabling.</p>
+            <div class="chips"><span class="chip">Fire Alarm</span><span class="chip">CCTV</span><span class="chip">Access Control</span><span class="chip">Data</span></div>
           </div>
         </article>
 
-        <article class="proj big rv" id="p-light" data-cat="design">
+        <article class="proj rv" id="p-light" data-cat="design">
           <div class="thumb" style="--g:linear-gradient(135deg,#3a2508,#170f04 60%,#5c3a0c)">
             <div class="art"><svg viewBox="0 0 100 80" fill="none" stroke="#ffc727" stroke-width="2.5"><path d="M20 74V14h14M80 74V14H66"/><path d="M34 14l-6 10h12zM66 14l-6 10h12z" fill="#ffc727" fill-opacity=".25"/><path d="M28 28l-10 30M40 28l10 30M60 28l-10 30M72 28l10 30" stroke="#fff" stroke-opacity=".35" stroke-dasharray="3 3"/></svg></div>
             <img style="object-position:top" src="images/lighting/01.png" alt="DIALux lighting design" loading="lazy" onerror="this.remove()">
@@ -661,12 +671,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
           <div class="pbody">
             <h3>Lighting Studies</h3>
-            <p>Lighting design for 140+ rooms in a university faculty, plus a street lighting corridor designed to CIE 115 and BS 5489.</p>
-            <div class="chips"><span class="chip">DIALux Evo</span><span class="chip">AutoCAD</span><span class="chip">Lux Calculation</span><span class="chip">Street Lighting</span></div>
+            <p>140+ university rooms and a street lighting corridor.</p>
+            <div class="chips"><span class="chip">DIALux Evo</span><span class="chip">Street Lighting</span><span class="chip">CIE 115</span></div>
           </div>
         </article>
 
-        <article class="proj big rv" id="p-twin-sa" data-cat="twin">
+        <article class="proj rv" id="p-twin-sa" data-cat="twin">
           <div class="thumb" style="--g:linear-gradient(135deg,#062f3a,#03141c 55%,#0a4d4a)">
             <div class="art"><svg viewBox="0 0 100 80" fill="none" stroke="#3be0ff" stroke-width="2.5"><rect x="22" y="10" width="40" height="62" rx="2"/><path d="M30 22h8M46 22h8M30 36h8M46 36h8M30 50h8M46 50h8"/><circle cx="62" cy="28" r="3" fill="#2bff88" stroke="none"/><circle cx="22" cy="46" r="3" fill="#ffc727" stroke="none"/><path d="M70 66V52M78 66V42M86 66V34" stroke="#ffc727" stroke-width="4" stroke-linecap="round"/><path d="M62 28c8 0 10-10 18-10" stroke="#2bff88" stroke-dasharray="3 3"/></svg></div>
             <img src="images/saudi-office-digital-twin.jpg" alt="Digital twin of a Saudi office building" loading="lazy" onerror="this.remove()">
@@ -674,12 +684,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
           <div class="pbody">
             <h3>Saudi Office Building: Digital Twin</h3>
-            <p>A digital twin of the 2-storey Saudi office building, built in Autodesk Tandem from my Revit design. It is set up for sensor integration, Wi-Fi sensor connections and web data fetching, so the facilities management team can view the building's analytics and act on them.</p>
-            <div class="chips"><span class="chip">Autodesk Tandem</span><span class="chip">Revit</span><span class="chip">Sensor Integration</span><span class="chip">Wi-Fi Sensors</span><span class="chip">Web Fetching</span><span class="chip">Facilities Management</span></div>
+            <p>Tandem twin of my Revit design, sensor-ready for FM.</p>
+            <div class="chips"><span class="chip">Tandem</span><span class="chip">Revit</span><span class="chip">Wi-Fi Sensors</span><span class="chip">FM</span></div>
           </div>
         </article>
 
-        <article class="proj big rv" id="p-twin-eg" data-cat="twin">
+        <article class="proj rv" id="p-twin-eg" data-cat="twin">
           <div class="thumb" style="--g:linear-gradient(135deg,#1c2a0a,#0b1204 55%,#2f4510)">
             <div class="art"><svg viewBox="0 0 100 80" fill="none" stroke="#b6f04a" stroke-width="2.5"><path d="M14 70V38l30-24 30 24v32z"/><rect x="36" y="50" width="16" height="20"/><circle cx="26" cy="44" r="3" fill="#2bff88" stroke="none"/><circle cx="62" cy="44" r="3" fill="#ffc727" stroke="none"/><path d="M80 30a10 10 0 0 1 0 14M85 25a17 17 0 0 1 0 24" stroke="#3be0ff"/></svg></div>
             <img src="images/egypt-home-digital-twin.jpg" alt="Digital twin of an Egyptian home" loading="lazy" onerror="this.remove()">
@@ -687,19 +697,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
           <div class="pbody">
             <h3>Egyptian Home: Digital Twin</h3>
-            <p>A live digital twin of an Egyptian home, running on a custom local website I built. Wi-Fi sensors stream live readings into the site's analytics, so the facilities management team can see how the home is performing and respond straight away.</p>
-            <div class="chips"><span class="chip">Custom Web Dashboard</span><span class="chip">Live Sensors</span><span class="chip">Wi-Fi Connection</span><span class="chip">Analytics</span><span class="chip">Facilities Management</span></div>
+            <p>Live twin on a custom local website with Wi-Fi sensors.</p>
+            <div class="chips"><span class="chip">Web Dashboard</span><span class="chip">Live Sensors</span><span class="chip">Analytics</span><span class="chip">FM</span></div>
           </div>
         </article>
-      </div>
-
-      <div class="drive rv">
-        <div>
-          <h3>Want to see the full drawings?</h3>
-          <p>Screenshots, models and documents for every project are in my portfolio folder.</p>
-        </div>
-        <a class="btn btn-volt" href="https://drive.google.com/drive/folders/101_O3BYpM1S4oRxnZmaYKzT1hvS8k2oi" target="_blank" rel="noopener">Open project folder
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
       </div>
     </div></div></div>
   </div>
@@ -709,9 +710,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <section id="showcase" class="fold" style="padding-top:20px">
   <div class="wrap">
     <div class="head fold-head rv">
-      <div><span class="kicker mono">// Showcase · Egyptian Hospital</span><h2>A sample SLD of <span class="volt">an actual project.</span></h2></div>
+      <div><span class="kicker mono">03 · Egyptian Hospital</span><h2>A sample SLD of <span class="volt">an actual project.</span></h2></div>
       <div class="fold-side">
-        <p>An interactive block diagram of the power system I designed for a 4-storey hospital. Click any block to see what it does, or switch views to follow normal, emergency or UPS power.</p>
         <button class="tog" type="button" aria-expanded="false"><span>Expand SLD</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
       </div>
     </div>
@@ -843,7 +843,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <aside class="inspector" aria-live="polite">
           <span class="mono k" id="ik">Click a block</span>
           <h3 id="it">Hospital power system</h3>
-          <p id="id">The utility feeds two ring main units into an MV switchgear. Two transformers feed a split MDB with power factor correction on each side, and a generator, ATS and UPS keep the essential and critical loads powered.</p>
+          <p id="id">Click any block to see what it does.</p>
           <div class="legend">
             <span><i></i> Normal live power</span>
             <span><i class="e"></i> Emergency path (generator)</span>
@@ -852,7 +852,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           </div>
         </aside>
       </div>
-      <div class="sld-foot"><span>Simplified block view of my design. Ratings, cable sizes and breaker settings are intentionally left out.</span><span class="mono">ETAP · AutoCAD · Revit</span></div>
+      <div class="sld-foot"><span>Block view only: no ratings, cable or breaker specs.</span><span class="mono">ETAP · AutoCAD · Revit</span></div>
     </div>
     </div></div></div>
   </div>
@@ -862,23 +862,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <section id="toolkit" class="fold" style="padding-top:20px">
   <div class="wrap">
     <div class="head fold-head rv">
-      <div><span class="kicker mono">// Toolkit &amp; compliance</span><h2>The right software, <span class="volt">and the right codes.</span></h2></div>
+      <div><span class="kicker mono">04</span><h2>Tools &amp; <span class="volt">codes</span></h2></div>
       <div class="fold-side">
-        <p>Six core tools in daily production and eight codes applied across KSA, Egypt and the USA.</p>
         <button class="tog" type="button" aria-expanded="false"><span>Expand toolkit</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
       </div>
     </div>
     <div class="fold-sum rv">
-      <div class="pills">
+      <div class="kit"><span class="mono kl">Tools</span><div class="pills">
         <span class="pill y">Revit</span><span class="pill y">ETAP</span><span class="pill y">AutoCAD</span><span class="pill y">DIALux Evo</span><span class="pill y">Tandem</span><span class="pill y">Excel</span>
-        <span class="pill">SEC</span><span class="pill">SBC</span><span class="pill">DPS</span><span class="pill">ECC</span><span class="pill">NEC</span><span class="pill">NFPA</span><span class="pill">IEC</span><span class="pill">BS</span>
-      </div>
+      </div></div>
+      <div class="kit"><span class="mono kl">Codes &amp; Regulations</span><div class="pills">
+        <span class="pill c">SEC</span><span class="pill c">SBC</span><span class="pill c">DPS</span><span class="pill c">ECC</span><span class="pill c">NEC</span><span class="pill c">NFPA</span><span class="pill c">IEC</span><span class="pill c">BS</span>
+      </div></div>
     </div>
     <div class="fold-body"><div class="inner"><div class="pad">
       <div class="split">
         <div class="panel rv">
-          <h3>Software</h3>
-          <p>The tools I use in daily production.</p>
+          <h3>Tools</h3>
           <div class="tools">
             <div class="tool"><b>Revit</b><span>BIM modeling</span></div>
             <div class="tool"><b>ETAP</b><span>Power analysis</span></div>
@@ -887,11 +887,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
             <div class="tool"><b>Tandem</b><span>Digital twin</span></div>
             <div class="tool"><b>Excel</b><span>Loads · BOQ</span></div>
           </div>
-          <div class="extra"><b>Also:</b> custom websites for digital twins, Navisworks, PVsyst, Siemens TIA Portal, LogixPro, CADe_SIMU, Factory IO</div>
+          <div class="extra"><b>Also</b><div class="pills sm"><span class="pill">Navisworks</span><span class="pill">PVsyst</span><span class="pill">TIA Portal</span><span class="pill">Web dashboards</span></div></div>
         </div>
         <div class="panel rv">
-          <h3>Codes &amp; Standards</h3>
-          <p>Every design is checked against the codes for its location.</p>
+          <h3>Codes &amp; Regulations</h3>
           <div class="codes">
             <div class="code">SEC<small>Saudi Electricity</small></div>
             <div class="code">SBC<small>Saudi Building Code</small></div>
@@ -902,7 +901,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
             <div class="code">IEC<small>International</small></div>
             <div class="code">BS<small>British Standards</small></div>
           </div>
-          <div class="extra"><b>Critical facilities:</b> TIA-942 · NFPA 70E · ISO 50001 · EPSS · BESS · MOP / EOP / SOP</div>
+          <div class="extra"><b>Critical facilities</b><div class="pills sm"><span class="pill">TIA-942</span><span class="pill">NFPA 70E</span><span class="pill">ISO 50001</span><span class="pill">EPSS</span></div></div>
         </div>
       </div>
     </div></div></div>
@@ -913,23 +912,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <section id="experience" class="fold" style="padding-top:20px">
   <div class="wrap">
     <div class="head fold-head rv">
-      <div><span class="kicker mono">// Trained by the industry</span><h2>Experience &amp; <span class="volt">background.</span></h2></div>
+      <div><span class="kicker mono">05</span><h2><span class="volt">Experience</span></h2></div>
       <div class="fold-side">
-        <p>Electrical Power Engineering, Ain Shams University. Professional Electrical Engineer Diploma, Eduvate.</p>
         <button class="tog" type="button" aria-expanded="false"><span>Expand experience</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
       </div>
     </div>
     <div class="fold-sum rv">
       <div class="pills">
-        <span class="pill y">Freelance Electrical Engineer</span><span class="pill">Dar Al-Handasah (Sidara)</span><span class="pill">Orascom Construction</span><span class="pill">MAM · Schneider Partner</span>
+        <span class="pill y">Freelance Electrical Engineer</span><span class="pill">Dar Al-Handasah (Sidara)</span><span class="pill">Orascom Construction</span><span class="pill">MAM · Schneider Partner</span><span class="pill c">B.Sc. Electrical Power · Ain Shams</span>
       </div>
     </div>
     <div class="fold-body"><div class="inner"><div class="pad">
       <div class="timeline">
-        <div class="exp rv"><span class="mono">Oct 2026 – Now</span><h4>Freelance Electrical Engineer</h4><div class="org">Self-employed</div><p>Concept and schematic designs and shop drawings for residential and commercial buildings.</p></div>
-        <div class="exp rv"><span class="mono">Aug – Sep 2026</span><h4>Design Engineer Intern</h4><div class="org">Dar Al-Handasah (Sidara)</div><p>Full BIM design workflow for a school, coordinated with all 4 disciplines in Revit.</p></div>
-        <div class="exp rv"><span class="mono">Aug 2026</span><h4>LV Panel Builder Intern</h4><div class="org">MAM · Schneider Partner</div><p>LV panel assembly and QC for ATS, MDB and PFC panels.</p></div>
-        <div class="exp rv"><span class="mono">Jul – Aug 2026</span><h4>Tender Engineer Intern</h4><div class="org">Orascom Construction</div><p>Reviewed electrical tender documents for substations, power plants and water treatment plants.</p><button class="exp-photo" type="button" data-gal="orascom"><img src="images/orascom/01.jpg" alt="Orascom internship graduation" loading="lazy"><span>2 photos</span></button></div>
+        <div class="exp rv"><span class="mono">Oct 2026 – Now</span><h4>Freelance Electrical Engineer</h4><div class="org">Self-employed</div><p>Designs &amp; shop drawings for residential and commercial.</p></div>
+        <div class="exp rv"><span class="mono">Aug – Sep 2026</span><h4>Design Engineer Intern</h4><div class="org">Dar Al-Handasah (Sidara)</div><p>Full BIM school design, 4 disciplines in Revit.</p></div>
+        <div class="exp rv"><span class="mono">Aug 2026</span><h4>LV Panel Builder Intern</h4><div class="org">MAM · Schneider Partner</div><p>ATS, MDB &amp; PFC panel assembly and QC.</p></div>
+        <div class="exp rv"><span class="mono">Jul – Aug 2026</span><h4>Tender Engineer Intern</h4><div class="org">Orascom Construction</div><p>Tender review: substations, power &amp; water plants.</p><button class="exp-photo" type="button" data-gal="orascom"><img src="images/orascom/01.jpg" alt="Orascom internship graduation" loading="lazy"><span>2 photos</span></button></div>
       </div>
     </div></div></div>
   </div>
@@ -942,7 +940,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <div class="glow a"></div>
       <span class="kicker mono">// Let's work together</span>
       <h2>Have a project that needs <span class="volt">power?</span></h2>
-      <p>Send me your drawings or a short brief and I'll reply with a scope, timeline and quote. I take full packages or single tasks, such as an ETAP study, a lighting design, a BOQ or a digital twin.</p>
+      <p>Send drawings or a short brief. I reply with scope, timeline and quote.</p>
       <div class="cgrid">
         <a class="cbox" href="https://wa.me/201282088119" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
@@ -1028,7 +1026,7 @@ function goTo(id){
   const f=el.closest('section.fold'); if(f&&!f.classList.contains('open')) setOpen(f,true);
   const cf=el.closest('.card-fold'); if(cf&&!cf.classList.contains('open')) setOpen(cf,true);
   if(el.classList.contains('proj')){ document.querySelector('#filters [data-f="all"]').click(); }
-  setTimeout(()=>{ const off=el.tagName==='SECTION'?80:Math.max(90,(innerHeight-el.offsetHeight)/2); scrollTo({top:el.getBoundingClientRect().top+scrollY-off,behavior:'smooth'});
+  setTimeout(()=>{ const off=el.tagName==='SECTION'?100:Math.max(110,(innerHeight-el.offsetHeight)/2); scrollTo({top:el.getBoundingClientRect().top+scrollY-off,behavior:'smooth'});
     if(el.classList.contains('proj')){ el.classList.add('flash'); setTimeout(()=>el.classList.remove('flash'),1600) } },750);
 }
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
